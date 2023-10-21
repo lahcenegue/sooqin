@@ -42,7 +42,6 @@ class MoreView extends StatelessWidget {
                 children: [
                   //log in
                   custtomCard(
-                    widthScreen: Get.width,
                     icon: Icons.login,
                     title: 'تسجيل الدخول',
                     onTap: () {
@@ -51,14 +50,12 @@ class MoreView extends StatelessWidget {
                   ),
                   // notification
                   custtomCard(
-                    widthScreen: Get.width,
                     icon: Icons.notifications,
                     title: 'تفعيل الاشعارات',
                     onTap: () {},
                   ),
                   // favorite
                   custtomCard(
-                    widthScreen: Get.width,
                     icon: Icons.favorite,
                     title: 'المفضلة',
                     onTap: () {
@@ -67,7 +64,6 @@ class MoreView extends StatelessWidget {
                   ),
                   //help
                   custtomCard(
-                    widthScreen: Get.width,
                     icon: Icons.help,
                     title: 'المساعدة',
                     onTap: () {

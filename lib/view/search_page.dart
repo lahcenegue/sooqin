@@ -33,7 +33,6 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    double widthScreen = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 40),
       child: FutureBuilder(
@@ -62,7 +61,6 @@ class MySearchDelegate extends SearchDelegate {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return productBox(
-                        widthSceeren: widthScreen,
                         id: snapshot.data![index].id!,
                         image: snapshot.data![index].images![0],
                         title: snapshot.data![index].title!,

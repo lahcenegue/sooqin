@@ -151,7 +151,6 @@ class ListAdsView extends StatelessWidget {
             itemBuilder: (context, index) {
               if (index < controller.listAds.length) {
                 return productBox(
-                  widthSceeren: Get.width,
                   id: controller.listAds[index].id!,
                   image: controller.listAds[index].images!.first,
                   title: controller.listAds[index].title!,

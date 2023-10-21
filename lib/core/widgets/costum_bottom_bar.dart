@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sooqin/core/utils/app_colors.dart';
 
-//TODO stateless
-
-class CustomBottomBar extends StatefulWidget {
+class CustomBottomBar extends StatelessWidget {
   final int selectedIndex;
   final List<CostomNavigationItem>? items;
-  const CustomBottomBar({
+  CustomBottomBar({
     super.key,
     required this.selectedIndex,
     this.items,
   });
 
-  @override
-  State<CustomBottomBar> createState() => _CustomBottomBarState();
-}
-
-class _CustomBottomBarState extends State<CustomBottomBar> {
-  double iconSize = 18;
-  double labelSize = 14;
+  final double iconSize = Get.width * 0.05;
+  final double labelSize = Get.width * 0.04;
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +41,17 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: widget.items![0].onTap,
+                  onTap: items![0].onTap,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       vertical: 08,
                       horizontal: 03,
                     ),
-                    width: widget.selectedIndex == 0
+                    width: selectedIndex == 0
                         ? widthScreen * 0.22
                         : widthScreen * 0.15,
                     decoration: BoxDecoration(
-                      color: widget.selectedIndex == 0
+                      color: selectedIndex == 0
                           ? AppColors.primary.withOpacity(0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(08),
@@ -66,16 +60,16 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset(
-                          widget.items![0].icon,
-                          color: widget.selectedIndex == 0
+                          items![0].icon,
+                          color: selectedIndex == 0
                               ? AppColors.primary
                               : Colors.black,
                           width: iconSize,
                         ),
                         Visibility(
-                          visible: widget.selectedIndex == 0 ? true : false,
+                          visible: selectedIndex == 0 ? true : false,
                           child: Text(
-                            widget.items![0].lebel,
+                            items![0].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: labelSize,
@@ -90,15 +84,15 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
                 //الاقسام
                 InkWell(
-                  onTap: widget.items![1].onTap,
+                  onTap: items![1].onTap,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
-                    width: widget.selectedIndex == 1
+                    width: selectedIndex == 1
                         ? widthScreen * 0.22
                         : widthScreen * 0.15,
                     decoration: BoxDecoration(
-                      color: widget.selectedIndex == 1
+                      color: selectedIndex == 1
                           ? AppColors.primary.withOpacity(0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(08),
@@ -107,16 +101,16 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset(
-                          widget.items![1].icon,
-                          color: widget.selectedIndex == 1
+                          items![1].icon,
+                          color: selectedIndex == 1
                               ? AppColors.primary
                               : Colors.black,
                           width: iconSize,
                         ),
                         Visibility(
-                          visible: widget.selectedIndex == 1 ? true : false,
+                          visible: selectedIndex == 1 ? true : false,
                           child: Text(
-                            widget.items![1].lebel,
+                            items![1].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: labelSize,
@@ -143,15 +137,15 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: widget.items![2].onTap,
+                  onTap: items![2].onTap,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
-                    width: widget.selectedIndex == 2
+                    width: selectedIndex == 2
                         ? widthScreen * 0.22
                         : widthScreen * 0.15,
                     decoration: BoxDecoration(
-                      color: widget.selectedIndex == 2
+                      color: selectedIndex == 2
                           ? AppColors.primary.withOpacity(0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(08),
@@ -160,16 +154,16 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset(
-                          widget.items![2].icon,
-                          color: widget.selectedIndex == 2
+                          items![2].icon,
+                          color: selectedIndex == 2
                               ? AppColors.primary
                               : Colors.black,
                           width: iconSize,
                         ),
                         Visibility(
-                          visible: widget.selectedIndex == 2 ? true : false,
+                          visible: selectedIndex == 2 ? true : false,
                           child: Text(
-                            widget.items![2].lebel,
+                            items![2].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: labelSize,
@@ -184,15 +178,15 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
                 //المزيد
                 InkWell(
-                  onTap: widget.items![3].onTap,
+                  onTap: items![3].onTap,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
-                    width: widget.selectedIndex == 3
+                    width: selectedIndex == 3
                         ? widthScreen * 0.22
                         : widthScreen * 0.15,
                     decoration: BoxDecoration(
-                      color: widget.selectedIndex == 3
+                      color: selectedIndex == 3
                           ? AppColors.primary.withOpacity(0.2)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(08),
@@ -201,16 +195,16 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset(
-                          widget.items![3].icon,
-                          color: widget.selectedIndex == 3
+                          items![3].icon,
+                          color: selectedIndex == 3
                               ? AppColors.primary
                               : Colors.black,
                           width: iconSize,
                         ),
                         Visibility(
-                          visible: widget.selectedIndex == 3 ? true : false,
+                          visible: selectedIndex == 3 ? true : false,
                           child: Text(
-                            widget.items![3].lebel,
+                            items![3].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: labelSize,

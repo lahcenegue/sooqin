@@ -37,31 +37,43 @@ class LoginController extends GetxController {
   }
 
   void loginCode() async {
-    isApiCallProcess = true;
     update();
-    await apiLoginCode(phoneNumber, yourCode).then((value) async {
-      isApiCallProcess = false;
-      if (value.code == null) {
-        if (value.user == "new") {
-          //Get.off(REgisterScreen);
-        } else if (value.user == "old") {
-          await box.write('phone', phoneNumber);
-          await box.write('token', value.token);
-          await box.write('name', value.name);
-          Get.offNamed(Routes.homeScreen);
-        } else if (value.code == 'error') {
-          Get.defaultDialog(
-            title: AppStrings.appName,
-            textConfirm: 'رجوع',
-            content: const Text(
-              'يجب ادخال الكود الصحيح',
-              textAlign: TextAlign.center,
-            ),
-          );
-        }
-      }
-    });
-
-    update();
+    if (yourCode.isEmpty || yourCode.length < 4) {
+      Get.defaultDialog(
+        title: AppStrings.appName,
+        textCancel: 'رجوع',
+        content: const Text(
+          'يجب ادخال الرمز الصحيح',
+          textAlign: TextAlign.center,
+        ),
+      );
+    } else {
+      isApiCallProcess = true;
+      update();
+      await apiLoginCode(phoneNumber, yourCode).then(
+        (value) async {
+          isApiCallProcess = false;
+          if (value.code == null) {
+            if (value.user == "new") {
+              //Get.off(RegisterScreen);
+            } else if (value.user == "old") {
+              box.write('phone', phoneNumber);
+              box.write('token', value.token);
+              box.write('name', value.name);
+              Get.offNamed(Routes.homeScreen);
+            } else if (value.code == 'error') {
+              Get.defaultDialog(
+                title: AppStrings.appName,
+                textConfirm: 'رجوع',
+                content: const Text(
+                  'يجب ادخال الكود الصحيح',
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }
+          }
+        },
+      );
+    }
   }
 }

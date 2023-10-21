@@ -7,7 +7,6 @@ import 'package:sooqin/routes/routes.dart';
 //TODO
 
 Widget productBox({
-  required double widthSceeren,
   required int id,
   required String image,
   required String title,
@@ -26,9 +25,9 @@ Widget productBox({
     child: Stack(
       children: [
         Container(
-          height: widthSceeren * 0.6,
+          height: Get.width * 0.6,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(widthSceeren * 0.03),
+            borderRadius: BorderRadius.circular(Get.width * 0.03),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.4),
@@ -41,10 +40,10 @@ Widget productBox({
           child: Stack(
             children: [
               Container(
-                width: widthSceeren * 0.45,
-                height: widthSceeren * 0.44,
+                width: Get.width * 0.45,
+                height: Get.width * 0.44,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(widthSceeren * 0.03),
+                  borderRadius: BorderRadius.circular(Get.width * 0.03),
                   color: Colors.white,
                 ),
                 child: image.isEmpty
@@ -54,8 +53,8 @@ Widget productBox({
                         imageBuilder: (context, imageProvider) => Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(widthSceeren * 0.03),
-                              topRight: Radius.circular(widthSceeren * 0.03),
+                              topLeft: Radius.circular(Get.width * 0.03),
+                              topRight: Radius.circular(Get.width * 0.03),
                             ),
                             image: DecorationImage(
                               image: imageProvider,
@@ -80,10 +79,10 @@ Widget productBox({
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                  width: widthSceeren * 0.43,
-                  height: widthSceeren * 0.24,
+                  width: Get.width * 0.43,
+                  height: Get.width * 0.24,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(widthSceeren * 0.03),
+                    borderRadius: BorderRadius.circular(Get.width * 0.03),
                     color: Colors.white,
                   ),
                   child: Column(
@@ -94,7 +93,7 @@ Widget productBox({
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          fontSize: widthSceeren * 0.035,
+                          fontSize: Get.width * 0.035,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -103,7 +102,7 @@ Widget productBox({
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: widthSceeren * 0.03,
+                          fontSize: Get.width * 0.03,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xffc1c1c1),
                         ),
@@ -113,7 +112,7 @@ Widget productBox({
                         children: [
                           Image.asset(
                             AppIcons.money,
-                            width: widthSceeren * 0.05,
+                            width: Get.width * 0.05,
                           ),
                           const SizedBox(width: 08),
                           Text(price),

@@ -6,7 +6,9 @@ import 'package:sooqin/logic/Bindings/main_bindings.dart';
 import 'package:sooqin/logic/Bindings/notification_bindings.dart';
 import 'package:sooqin/view/ads_view.dart';
 import 'package:sooqin/view/categories_view.dart';
+import 'package:sooqin/view/edit_profil_view.dart';
 import 'package:sooqin/view/favorite_view.dart';
+import 'package:sooqin/view/help_screen.dart';
 import 'package:sooqin/view/home_view.dart';
 import 'package:sooqin/view/list_ads_view.dart';
 import 'package:sooqin/view/login_code_view.dart';
@@ -64,6 +66,14 @@ class AppRoutes {
       page: () => NotificationsView(),
       binding: NotificationBinding(),
     ),
+    GetPage(
+      name: Routes.editProfile,
+      page: () => EditProfilScreen(),
+    ),
+    GetPage(
+      name: Routes.help,
+      page: () => const HelpView(),
+    ),
   ];
 }
 
@@ -77,4 +87,6 @@ class Routes {
   static const adsPage = '/ads';
   static const favoritePage = '/favorite';
   static const notificationPage = '/notification';
+  static const editProfile = '/edit';
+  static const help = '/help';
 }

@@ -14,7 +14,6 @@ class MainContorller extends GetxController {
 
   @override
   void onInit() {
-    //index = Get.arguments['index'] ?? 0;
     getData().whenComplete(() => getMainData());
     super.onInit();
   }
@@ -24,22 +23,11 @@ class MainContorller extends GetxController {
   }
 
   void getMainData() {
-    DateTime time = DateTime.now();
-
-    try {
-      for (int i = 0; i < main.banners!.length; i++) {
-        banner.add(main.banners![i].image!);
-      }
-      ads.addAll(main.ads!);
-    } finally {
-      isLoading(false);
-      DateTime time2 = DateTime.now();
-      var resultSconde = time2.second - time.second;
-      var resultmili = time2.millisecond - time.millisecond;
-      print('=========================================');
-      print('result:  $resultSconde : $resultmili');
-      print('=========================================');
+    for (int i = 0; i < main.banners!.length; i++) {
+      banner.add(main.banners![i].image!);
     }
+    ads.addAll(main.ads!);
+    isLoading(false);
   }
 
   //

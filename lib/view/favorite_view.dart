@@ -38,7 +38,6 @@ class FavoriteView extends StatelessWidget {
                 itemCount: controller.response.length,
                 itemBuilder: (context, index) {
                   return productBox(
-                    widthSceeren: Get.width,
                     id: int.parse(controller.response[index]['product_id']),
                     image: controller.response[index]['image'],
                     title: controller.response[index]['title'],

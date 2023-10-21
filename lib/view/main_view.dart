@@ -138,7 +138,6 @@ class MainView extends StatelessWidget {
                     itemCount: mainController.ads.length,
                     itemBuilder: (context, index) {
                       return productBox(
-                        widthSceeren: Get.width,
                         id: mainController.ads[index].id!,
                         image: mainController.ads[index].image!,
                         title: mainController.ads[index].title!,

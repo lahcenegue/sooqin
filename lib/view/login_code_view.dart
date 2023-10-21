@@ -10,7 +10,6 @@ class LoginCodeView extends StatelessWidget {
     super.key,
   });
   final LoginController controller = Get.find<LoginController>();
-  final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,99 +36,96 @@ class LoginCodeView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               height: Get.height * 0.8,
               width: Get.width,
-              child: Form(
-                key: globalKey,
-                child: ListView(
-                  children: [
-                    SizedBox(
-                      height: Get.height * 0.27,
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.27,
+                  ),
+                  Text(
+                    'رمز التحقق',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: Get.height * 0.03,
+                      color: Colors.white,
                     ),
-                    Text(
-                      'رمز التحقق',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: Get.height * 0.03,
-                        color: Colors.white,
-                      ),
+                  ),
+                  SizedBox(height: Get.width * 0.02),
+                  Text(
+                    'ادخل الارقام التي ارسلت الى رقم هاتفك',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: Get.height * 0.02,
+                      color: Colors.white,
                     ),
-                    SizedBox(height: Get.width * 0.02),
-                    Text(
-                      'ادخل الارقام التي ارسلت الى رقم هاتفك',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: Get.height * 0.02,
-                        color: Colors.white,
-                      ),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.07,
+                  ),
+                  Container(
+                    width: Get.width,
+                    height: Get.height * 0.11,
+                    padding: EdgeInsets.all(Get.width * 0.02),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(Get.width * 0.02),
                     ),
-                    SizedBox(
-                      height: Get.height * 0.07,
-                    ),
-                    Container(
-                      width: Get.width,
-                      height: Get.height * 0.11,
-                      padding: EdgeInsets.all(Get.width * 0.02),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(Get.width * 0.02),
-                      ),
-                      child: Row(
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'رمز التحقق ارسل الى الرقم',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: Get.height * 0.02,
-                                ),
+                    child: Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'رمز التحقق ارسل الى الرقم',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: Get.height * 0.02,
                               ),
-                              Text(
-                                controller.phoneNumber,
-                                style: TextStyle(
-                                  fontSize: Get.height * 0.03,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            icon: const Icon(
-                              Icons.mode,
                             ),
+                            Text(
+                              controller.phoneNumber,
+                              style: TextStyle(
+                                fontSize: Get.height * 0.03,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: const Icon(
+                            Icons.mode,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: Get.height * 0.05),
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: Pinput(
-                        length: 4,
-                        onChanged: (value) {
-                          controller.yourCode = value;
-                        },
-                      ),
-                    ),
-
-                    // login button
-                    customButton(
-                      title: 'تأكيد',
-                      buttonWidth: Get.width,
-                      topPadding: 40,
-                      onPressed: () {
-                        controller.loginCode();
+                  ),
+                  SizedBox(height: Get.height * 0.05),
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Pinput(
+                      length: 4,
+                      onChanged: (value) {
+                        controller.yourCode = value;
                       },
                     ),
-                    SizedBox(
-                      height: Get.height * 0.12,
-                    ),
-                  ],
-                ),
+                  ),
+
+                  // login button
+                  customButton(
+                    title: 'تأكيد',
+                    buttonWidth: Get.width,
+                    topPadding: 40,
+                    onPressed: () {
+                      controller.loginCode();
+                    },
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.12,
+                  ),
+                ],
               ),
             ),
           ),
@@ -152,14 +148,5 @@ class LoginCodeView extends StatelessWidget {
         ],
       )),
     );
-  }
-
-  bool validateAndSave() {
-    final FormState? form = globalKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
   }
 }
