@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sooqin/core/utils/app_colors.dart';
 
+//TODO stateless
+
 class CustomBottomBar extends StatefulWidget {
   final int selectedIndex;
   final List<CostomNavigationItem>? items;

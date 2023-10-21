@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appName = 'App';
+  static const String appName = 'Sooq.in';
   static const String currency = 'دينار';
   static const String fontFamily = 'Tajawal';
   static const String noRouteFound = 'No Route Found';

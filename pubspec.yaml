@@ -28,18 +28,27 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.3.0
+  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
+  dropdown_search: ^5.0.6
   flutter:
     sdk: flutter
+  flutter_staggered_grid_view: ^0.7.0
   get: ^4.6.6
+  get_storage: ^2.1.1
+  http: ^1.1.0
+  intl_phone_field: ^3.2.0
+  onesignal_flutter: ^5.0.3
+  path: ^1.8.3
+  permission_handler: ^11.0.1
+  pinput: ^3.0.1
+  share_plus: ^7.2.1
+  smooth_page_indicator: ^1.1.0
+  sqflite: ^2.3.0
+  url_launcher: ^6.1.14
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -50,7 +59,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
 
   assets:
     - assets/images/
@@ -64,4 +72,3 @@ flutter:
     - family: NotoFont
       fonts:
         - asset: assets/fonts/NotoKufiArabic-Regular.ttf
- 

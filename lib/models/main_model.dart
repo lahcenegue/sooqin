@@ -2,8 +2,8 @@ class MainModel {
   List<BannerModel>? banners;
   List<AdsModels>? ads;
   MainModel({
-    required this.banners,
-    required this.ads,
+    this.banners,
+    this.ads,
   });
 
   MainModel.fromJson(Map<String, dynamic> json) {
@@ -28,16 +28,13 @@ class MainModel {
 
 class BannerModel {
   String? image;
-  int? id;
 
   BannerModel({
-    required this.id,
     required this.image,
   });
 
   BannerModel.fromJson(Map<String, dynamic> json) {
     image = json['img'];
-    id = json['adld'];
   }
 }
 
