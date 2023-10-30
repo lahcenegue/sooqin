@@ -17,7 +17,7 @@ class ListAdsController extends GetxController {
   List<int> subCatListId = <int>[];
   //
   int index = 0;
-  RxBool isLoading = true.obs;
+  bool isLoading = false;
   String selectedBrand = 'Brand';
   String secondBrand = '';
   String? title;
@@ -34,6 +34,9 @@ class ListAdsController extends GetxController {
   }
 
   Future<void> getData() async {
+    isLoading = true;
+    update();
+
     List<AdsModel> ads = await getSubCatAds(id: id!, page: 1);
     listAds.addAll(ads);
     subCategories = await getSubCategory(id: id!);
@@ -46,8 +49,8 @@ class ListAdsController extends GetxController {
         subCategoriesListId.add(subCategories.subCat![i].id!);
       }
     }
-
-    isLoading(false);
+    isLoading = false;
+    update();
   }
 
   Future<void> updateBrand(String brand) async {
@@ -60,7 +63,7 @@ class ListAdsController extends GetxController {
       subCatListId.add(subCategories.subCat![iBrand].subAll![i].subId!);
     }
     update();
-    isLoading(true);
+    isLoading = true;
     listAds.clear();
 
     int i = subCategoriesListName.indexOf(brand);
@@ -69,20 +72,20 @@ class ListAdsController extends GetxController {
 
     listAds.addAll(ads);
 
-    isLoading(false);
+    isLoading = false;
 
     update();
   }
 
   Future<void> updateSubBrand(String sBrand) async {
     secondBrand = sBrand;
-    isLoading(true);
+    isLoading = true;
     listAds.clear();
     update();
     int i = subCatListName.indexOf(sBrand);
     List<AdsModel> ads = await getSubCatAds(id: subCatListId[i], page: 1);
     listAds.addAll(ads);
-    isLoading(false);
+    isLoading = false;
     update();
   }
 }

@@ -10,7 +10,7 @@ class CategoriesView extends StatelessWidget {
     super.key,
   });
 
-  final controller = Get.put(CategoriesController());
+  final controller = Get.find<CategoriesController>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class CategoriesView extends StatelessWidget {
                 width: Get.width * 0.35,
                 color: Colors.grey[300],
                 child: ListView.separated(
-                  itemCount: controller.categoriesList.length,
+                  itemCount: controller.categoriesListName.length,
                   separatorBuilder: (context, index) => const Divider(
                     indent: 10,
                     endIndent: 10,
@@ -50,36 +50,33 @@ class CategoriesView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return TextButton(
                       onPressed: () {
-                        controller.getSubCat(controller.categoriesList[index]);
+                        controller
+                            .getSubCat(controller.categoriesListName[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: GetBuilder<CategoriesController>(
-                          builder: (_) {
-                            return Text(
-                              controller.categoriesList[index],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: controller.index ==
-                                        controller.categoriesList.indexOf(
-                                            controller.categoriesList[index])
-                                    ? Get.width * 0.05
-                                    : Get.width * 0.04,
-                                color: controller.index ==
-                                        controller.categoriesList.indexOf(
-                                            controller.categoriesList[index])
-                                    ? AppColors.primary
-                                    : AppColors.secondary,
-                                fontWeight: controller.index ==
-                                        controller.categoriesList.indexOf(
-                                            controller.categoriesList[index])
-                                    ? FontWeight.w700
-                                    : FontWeight.w400,
-                              ),
-                            );
-                          },
+                        child: Text(
+                          controller.categoriesListName[index],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: controller.index ==
+                                    controller.categoriesListName.indexOf(
+                                        controller.categoriesListName[index])
+                                ? Get.width * 0.05
+                                : Get.width * 0.04,
+                            color: controller.index ==
+                                    controller.categoriesListName.indexOf(
+                                        controller.categoriesListName[index])
+                                ? AppColors.primary
+                                : AppColors.secondary,
+                            fontWeight: controller.index ==
+                                    controller.categoriesListName.indexOf(
+                                        controller.categoriesListName[index])
+                                ? FontWeight.w700
+                                : FontWeight.w400,
+                          ),
                         ),
                       ),
                     );
@@ -91,7 +88,7 @@ class CategoriesView extends StatelessWidget {
                 width: Get.width * 0.65,
                 padding: const EdgeInsets.all(20),
                 child: ListView.separated(
-                  itemCount: controller.subCategoriesList.length,
+                  itemCount: controller.subCategories.length,
                   separatorBuilder: (context, index) =>
                       SizedBox(height: Get.width * 0.05),
                   itemBuilder: (context, index) {
@@ -100,8 +97,8 @@ class CategoriesView extends StatelessWidget {
                         Get.toNamed(
                           Routes.listAds,
                           arguments: {
-                            'title': controller.subCategoriesList[index].name,
-                            'id': controller.subCategoriesList[index].id,
+                            'title': controller.subCategories[index].name,
+                            'id': controller.subCategories[index].id,
                             'index': index,
                           },
                         );
@@ -112,7 +109,7 @@ class CategoriesView extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(10)),
-                        child: Text(controller.subCategoriesList[index].name!),
+                        child: Text(controller.subCategories[index].name!),
                       ),
                     );
                   },

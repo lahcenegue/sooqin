@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sooqin/core/utils/app_icons.dart';
+import 'package:sooqin/core/utils/app_strings.dart';
 import 'package:sooqin/core/widgets/button_favorite.dart';
+import 'package:sooqin/core/widgets/shimmer_loading.dart';
 import 'package:sooqin/routes/routes.dart';
-//TODO
 
 Widget productBox({
   required int id,
@@ -63,11 +64,14 @@ Widget productBox({
                           ),
                         ),
                         progressIndicatorBuilder:
-                            (context, url, downloadProgress) => Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 5,
-                            value: downloadProgress.progress,
+                            (context, url, downloadProgress) => const Center(
+                          child: ShimmerLoading(
+                            type: AppStrings.productBox,
                           ),
+                          // child: CircularProgressIndicator(
+                          //   strokeWidth: 5,
+                          //   value: downloadProgress.progress,
+                          // ),
                         ),
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
@@ -147,40 +151,3 @@ Widget productBox({
     ),
   );
 }
-
-//             SizedBox(
-//               width: widthSceeren * 0.6,
-//               height: widthSceeren * 0.25,
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   SizedBox(
-//                     width: widthSceeren * 0.5,
-//                     child: Text(
-//                       title,
-//                       overflow: TextOverflow.ellipsis,
-//                       style: TextStyle(
-//                         color: AppColors.primary,
-//                         fontSize: 16,
-//                       ),
-//                     ),
-//                   ),
-//                   Text(
-//                     desc,
-//                     maxLines: 2,
-//                   ),
-//                   iconText(price: price, time: created),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//       Positioned(
-//         top: 08,
-//         left: 08,
-
-//       )
-//     ],
-//   );

@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
-
-//TODO stateless
+import 'package:sooqin/core/utils/app_strings.dart';
+import 'package:sooqin/core/widgets/shimmer_loading.dart';
 
 class ImagesSlider extends StatefulWidget {
   final List urlImages;
-  final double height;
+
   const ImagesSlider({
     super.key,
     required this.urlImages,
-    required this.height,
   });
 
   @override
@@ -26,7 +26,7 @@ class _ImagesSliderState extends State<ImagesSlider> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: widget.height,
+      height: Get.height * 0.4,
       color: Colors.transparent,
       child: Stack(
         children: [
@@ -34,13 +34,13 @@ class _ImagesSliderState extends State<ImagesSlider> {
             itemCount: widget.urlImages.length,
             itemBuilder: (context, index, realindex) {
               final urlImage = widget.urlImages[index];
-              return buildImage(urlImage, index, widget.height,
+              return buildImage(urlImage, index, Get.height * 0.4,
                   MediaQuery.of(context).size.width);
             },
             options: CarouselOptions(
               aspectRatio: 16 / 9,
               viewportFraction: 1,
-              height: widget.height,
+              height: Get.height * 0.4,
               autoPlay: true,
               enableInfiniteScroll: false,
               autoPlayAnimationDuration: const Duration(seconds: 2),
@@ -88,10 +88,9 @@ Widget buildImage(String urlImage, int index, double height, double width) =>
               imageUrl: urlImage,
               fit: BoxFit.cover,
               progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 5,
-                  value: downloadProgress.progress,
+                  const Center(
+                child: ShimmerLoading(
+                  type: AppStrings.banner,
                 ),
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),

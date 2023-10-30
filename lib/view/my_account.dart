@@ -10,7 +10,7 @@ class MyAccountView extends StatelessWidget {
     super.key,
   });
 
-  final myAccountController = Get.find<MyAccountController>();
+  final myAccountController = Get.put(MyAccountController());
 
   @override
   Widget build(BuildContext context) {

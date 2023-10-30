@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+import 'package:sooqin/core/widgets/splash.dart';
+import 'package:sooqin/logic/Bindings/add_ads_bindings.dart';
 import 'package:sooqin/logic/Bindings/ads_bindings.dart';
 import 'package:sooqin/logic/Bindings/favorite_bindings.dart';
 import 'package:sooqin/logic/Bindings/listads_bindings.dart';
 import 'package:sooqin/logic/Bindings/main_bindings.dart';
 import 'package:sooqin/logic/Bindings/notification_bindings.dart';
+import 'package:sooqin/view/add_ads.dart';
 import 'package:sooqin/view/ads_view.dart';
 import 'package:sooqin/view/categories_view.dart';
 import 'package:sooqin/view/edit_profil_view.dart';
@@ -18,14 +21,18 @@ import 'package:sooqin/view/notifications_view.dart';
 
 class AppRoutes {
   //initailRoute
-  static const home = Routes.homeScreen;
+  //static const home = Routes.homeScreen;
 
   //getPages
 
   static final routes = [
     GetPage(
+      name: Routes.splash,
+      page: () => const SplashScreen(),
+    ),
+    GetPage(
       name: Routes.homeScreen,
-      page: () => HomeView(),
+      page: () => const HomeView(),
       bindings: [
         MainBinding(),
       ],
@@ -74,11 +81,17 @@ class AppRoutes {
       name: Routes.help,
       page: () => const HelpView(),
     ),
+    GetPage(
+      name: Routes.addAds,
+      page: () => AddAdsView(),
+      binding: AddAdsBinding(),
+    ),
   ];
 }
 
 class Routes {
-  static const homeScreen = '/';
+  static const splash = '/';
+  static const homeScreen = '/home';
   static const mainScreen = '/main';
   static const loginPhone = '/loginPhone';
   static const loginCode = '/loginCode';
@@ -89,4 +102,5 @@ class Routes {
   static const notificationPage = '/notification';
   static const editProfile = '/edit';
   static const help = '/help';
+  static const addAds = '/add';
 }

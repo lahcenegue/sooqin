@@ -131,46 +131,49 @@ class ListAdsView extends StatelessWidget {
           ),
         ),
       ),
-      body: Obx(() {
-        if (controller.isLoading.value) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else {
-          return MasonryGridView.builder(
-            controller: scrollController,
-            physics: const BouncingScrollPhysics(),
-            mainAxisSpacing: Get.width * 0.05,
-            crossAxisSpacing: Get.width * 0.04,
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-            gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: controller.listAds.length,
-            itemBuilder: (context, index) {
-              if (index < controller.listAds.length) {
-                return productBox(
-                  id: controller.listAds[index].id!,
-                  image: controller.listAds[index].images!.first,
-                  title: controller.listAds[index].title!,
-                  desc: controller.listAds[index].desc!,
-                  price: controller.listAds[index].price!,
-                  created: controller.listAds[index].created!,
-                  userId: controller.listAds[index].userId!,
-                );
-              } else {
-                return const Row(
-                  children: [
-                    Spacer(),
-                    CircularProgressIndicator(),
-                  ],
-                );
-              }
-            },
-          );
-        }
-      }),
+      body: GetBuilder<ListAdsController>(
+        builder: (cntx) {
+          if (cntx.isLoading == true) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return MasonryGridView.builder(
+              controller: scrollController,
+              physics: const BouncingScrollPhysics(),
+              mainAxisSpacing: Get.width * 0.05,
+              crossAxisSpacing: Get.width * 0.04,
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              gridDelegate:
+                  const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: controller.listAds.length,
+              itemBuilder: (context, index) {
+                if (index < controller.listAds.length) {
+                  return productBox(
+                    id: controller.listAds[index].id!,
+                    image: controller.listAds[index].images!.first,
+                    title: controller.listAds[index].title!,
+                    desc: controller.listAds[index].desc!,
+                    price: controller.listAds[index].price!,
+                    created: controller.listAds[index].created!,
+                    userId: controller.listAds[index].userId!,
+                  );
+                } else {
+                  return const Row(
+                    children: [
+                      Spacer(),
+                      CircularProgressIndicator(),
+                    ],
+                  );
+                }
+              },
+            );
+          }
+        },
+      ),
     );
   }
 }

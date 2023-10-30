@@ -37,7 +37,6 @@ class LoginController extends GetxController {
   }
 
   void loginCode() async {
-    update();
     if (yourCode.isEmpty || yourCode.length < 4) {
       Get.defaultDialog(
         title: AppStrings.appName,
@@ -60,7 +59,7 @@ class LoginController extends GetxController {
               box.write('phone', phoneNumber);
               box.write('token', value.token);
               box.write('name', value.name);
-              Get.offNamed(Routes.homeScreen);
+              Get.offNamed(Routes.splash);
             } else if (value.code == 'error') {
               Get.defaultDialog(
                 title: AppStrings.appName,

@@ -7,10 +7,10 @@ class MainContorller extends GetxController {
   MainModel main = MainModel();
   //
 
-  RxList<String> banner = <String>[].obs;
-  RxList<AdsModels> ads = <AdsModels>[].obs;
+  List<String> banner = <String>[];
+  List<AdsModels> ads = <AdsModels>[];
 
-  RxBool isLoading = true.obs;
+  bool isLoading = true;
 
   @override
   void onInit() {
@@ -27,7 +27,8 @@ class MainContorller extends GetxController {
       banner.add(main.banners![i].image!);
     }
     ads.addAll(main.ads!);
-    isLoading(false);
+    isLoading = false;
+    update();
   }
 
   //

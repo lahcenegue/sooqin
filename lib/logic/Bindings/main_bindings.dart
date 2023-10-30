@@ -12,8 +12,8 @@ class MainBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(MainContorller(), permanent: true);
-    Get.put(CategoriesController());
-    Get.put(NotificationController());
+    Get.put(CategoriesController(), permanent: true);
+    Get.put(NotificationController(), permanent: true);
 
     if (box.read('token') != null) {
       Get.put(MyAnnonceController());

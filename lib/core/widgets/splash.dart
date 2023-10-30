@@ -1,8 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sooqin/view/home_view.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    goToHomePage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,5 +36,12 @@ class SplashScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> goToHomePage() async {
+    Timer(
+        const Duration(milliseconds: 10),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const HomeView())));
   }
 }

@@ -80,7 +80,7 @@ class EditProfilScreen extends StatelessWidget {
                   children: [
                     customTextFormField(
                       onChanged: (value) {
-                        // updateProfilRequestModel.info = value;
+                        controller.writeInfo('info', value);
                       },
                       validator: (value) {
                         if (value.toString().isEmpty) {
@@ -98,7 +98,7 @@ class EditProfilScreen extends StatelessWidget {
                     //email
                     customTextFormField(
                       onChanged: (value) {
-                        //updateProfilRequestModel.email = value;
+                        controller.writeInfo('email', value);
                       },
                       validator: (value) {
                         if (value.toString().isEmpty) {
@@ -121,28 +121,7 @@ class EditProfilScreen extends StatelessWidget {
                       topPadding: 40,
                       buttonWidth: Get.width,
                       onPressed: () async {
-                        // if (validateAndSave()) {
-                        // setState(() {
-                        //   isApiCallProcess = true;
-                        // });
-                        //   await apiUpdateProfil(
-                        //     updateProfilRequestModel:
-                        //         updateProfilRequestModel,
-                        //     token: CacheHelper.getData(key: PrefKeys.token),
-                        //   ).then((value) {
-                        //     setState(() {
-                        //       isApiCallProcess = false;
-                        //     });
-                        //     if (value.edit == 'ok') {
-                        //       Navigator.pushReplacement(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //           builder: (context) => const HomeScreen(),
-                        //         ),
-                        //       );
-                        //     }
-                        //   });
-                        // }
+                        controller.editProfile();
                       },
                     ),
                     SizedBox(height: Get.height * 0.1),
@@ -150,19 +129,23 @@ class EditProfilScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Visibility(
-              visible: false,
-              child: Stack(
-                children: [
-                  ModalBarrier(
-                    color: Colors.white.withOpacity(0.6),
-                    dismissible: true,
+            GetBuilder<MyAccountController>(
+              builder: (cntx) {
+                return Visibility(
+                  visible: cntx.isLoading.value ? true : false,
+                  child: Stack(
+                    children: [
+                      ModalBarrier(
+                        color: Colors.white.withOpacity(0.6),
+                        dismissible: true,
+                      ),
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    ],
                   ),
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                ],
-              ),
+                );
+              },
             ),
           ],
         ),

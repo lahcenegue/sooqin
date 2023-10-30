@@ -51,17 +51,14 @@ class AdsView extends StatelessWidget {
                   const SizedBox(width: 08),
                   Text(
                     controller.adsModel.user!.name!,
-
-                    //hvm.adsData!.userName!,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: Get.width * 0.018,
+                      fontSize: Get.width * 0.045,
                     ),
                   ),
                   const Spacer(),
                   lancherBox(
                     icon: Icons.phone,
-                    width: Get.width,
                     onTap: () async {
                       final Uri launchUri = Uri(
                         scheme: 'tel',
@@ -73,7 +70,6 @@ class AdsView extends StatelessWidget {
                   const SizedBox(width: 05),
                   lancherBox(
                     icon: Icons.message,
-                    width: Get.width,
                     onTap: () async {
                       final Uri launchUri = Uri(
                         scheme: 'sms',
@@ -89,7 +85,6 @@ class AdsView extends StatelessWidget {
                   const SizedBox(width: 05),
                   lancherBox(
                     icon: Icons.perm_phone_msg,
-                    width: Get.width,
                     onTap: () async {
                       final Uri whatsapp = Uri.parse(
                           'https://wa.me/${controller.adsModel.user!.mobile!}');
@@ -100,7 +95,6 @@ class AdsView extends StatelessWidget {
               ),
             ),
             body: ListView(
-              //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                   width: Get.width,
@@ -109,7 +103,6 @@ class AdsView extends StatelessWidget {
                     children: [
                       ImagesSlider(
                         urlImages: controller.adsModel.images!,
-                        height: Get.height * 0.4,
                       ),
                       Positioned(
                         top: 0,

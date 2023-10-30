@@ -5,6 +5,10 @@ class AppColors {
   static Color secondary = const Color(0xffa69dd7);
   static Color hint = Colors.white;
   static Color text = Colors.black;
+
+  //
+  static Color shimmerBaseColor = Colors.grey[200]!;
+  static Color shimmerlightColor = Colors.grey[50]!;
 }
 
 //

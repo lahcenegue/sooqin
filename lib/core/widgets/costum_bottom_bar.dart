@@ -5,20 +5,16 @@ import 'package:sooqin/core/utils/app_colors.dart';
 class CustomBottomBar extends StatelessWidget {
   final int selectedIndex;
   final List<CostomNavigationItem>? items;
-  CustomBottomBar({
+  const CustomBottomBar({
     super.key,
     required this.selectedIndex,
     this.items,
   });
 
-  final double iconSize = Get.width * 0.05;
-  final double labelSize = Get.width * 0.04;
-
   @override
   Widget build(BuildContext context) {
-    double widthScreen = MediaQuery.of(context).size.width;
     return Container(
-      width: widthScreen,
+      width: Get.width,
       height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 04),
       decoration: BoxDecoration(
@@ -36,7 +32,7 @@ class CustomBottomBar extends StatelessWidget {
         children: [
           // 1st
           SizedBox(
-            width: widthScreen * 0.4,
+            width: Get.width * 0.4,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -48,8 +44,8 @@ class CustomBottomBar extends StatelessWidget {
                       horizontal: 03,
                     ),
                     width: selectedIndex == 0
-                        ? widthScreen * 0.22
-                        : widthScreen * 0.15,
+                        ? Get.width * 0.22
+                        : Get.width * 0.15,
                     decoration: BoxDecoration(
                       color: selectedIndex == 0
                           ? AppColors.primary.withOpacity(0.2)
@@ -64,7 +60,7 @@ class CustomBottomBar extends StatelessWidget {
                           color: selectedIndex == 0
                               ? AppColors.primary
                               : Colors.black,
-                          width: iconSize,
+                          width: Get.width * 0.05,
                         ),
                         Visibility(
                           visible: selectedIndex == 0 ? true : false,
@@ -72,7 +68,7 @@ class CustomBottomBar extends StatelessWidget {
                             items![0].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: labelSize,
+                              fontSize: Get.width * 0.04,
                               color: AppColors.primary,
                             ),
                           ),
@@ -89,8 +85,8 @@ class CustomBottomBar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
                     width: selectedIndex == 1
-                        ? widthScreen * 0.22
-                        : widthScreen * 0.15,
+                        ? Get.width * 0.22
+                        : Get.width * 0.15,
                     decoration: BoxDecoration(
                       color: selectedIndex == 1
                           ? AppColors.primary.withOpacity(0.2)
@@ -105,7 +101,7 @@ class CustomBottomBar extends StatelessWidget {
                           color: selectedIndex == 1
                               ? AppColors.primary
                               : Colors.black,
-                          width: iconSize,
+                          width: Get.width * 0.05,
                         ),
                         Visibility(
                           visible: selectedIndex == 1 ? true : false,
@@ -113,7 +109,7 @@ class CustomBottomBar extends StatelessWidget {
                             items![1].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: labelSize,
+                              fontSize: Get.width * 0.04,
                               color: AppColors.primary,
                             ),
                           ),
@@ -127,12 +123,12 @@ class CustomBottomBar extends StatelessWidget {
           ),
 
           // space
-          SizedBox(width: widthScreen * 0.15),
+          SizedBox(width: Get.width * 0.15),
 
           //اعلاناتي
           //2 rd
           SizedBox(
-            width: widthScreen * 0.4,
+            width: Get.width * 0.4,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -142,8 +138,8 @@ class CustomBottomBar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
                     width: selectedIndex == 2
-                        ? widthScreen * 0.22
-                        : widthScreen * 0.15,
+                        ? Get.width * 0.22
+                        : Get.width * 0.15,
                     decoration: BoxDecoration(
                       color: selectedIndex == 2
                           ? AppColors.primary.withOpacity(0.2)
@@ -158,7 +154,7 @@ class CustomBottomBar extends StatelessWidget {
                           color: selectedIndex == 2
                               ? AppColors.primary
                               : Colors.black,
-                          width: iconSize,
+                          width: Get.width * 0.05,
                         ),
                         Visibility(
                           visible: selectedIndex == 2 ? true : false,
@@ -166,7 +162,7 @@ class CustomBottomBar extends StatelessWidget {
                             items![2].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: labelSize,
+                              fontSize: Get.width * 0.04,
                               color: AppColors.primary,
                             ),
                           ),
@@ -183,8 +179,8 @@ class CustomBottomBar extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 08, horizontal: 03),
                     width: selectedIndex == 3
-                        ? widthScreen * 0.22
-                        : widthScreen * 0.15,
+                        ? Get.width * 0.22
+                        : Get.width * 0.15,
                     decoration: BoxDecoration(
                       color: selectedIndex == 3
                           ? AppColors.primary.withOpacity(0.2)
@@ -199,7 +195,7 @@ class CustomBottomBar extends StatelessWidget {
                           color: selectedIndex == 3
                               ? AppColors.primary
                               : Colors.black,
-                          width: iconSize,
+                          width: Get.width * 0.05,
                         ),
                         Visibility(
                           visible: selectedIndex == 3 ? true : false,
@@ -207,7 +203,7 @@ class CustomBottomBar extends StatelessWidget {
                             items![3].lebel,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: labelSize,
+                              fontSize: Get.width * 0.04,
                               color: AppColors.primary,
                             ),
                           ),
