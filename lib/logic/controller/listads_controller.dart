@@ -1,16 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:sooqin/Data/APIs/get_ads_api.dart';
 import 'package:sooqin/Data/APIs/sub_cat_api.dart';
 import 'package:sooqin/models/ads_model.dart';
-
 import 'package:sooqin/models/subcat_model.dart';
 
 class ListAdsController extends GetxController {
+  ScrollController controller = ScrollController();
   List<AdsModel> listAds = <AdsModel>[].obs;
   SubCatModel subCategories = SubCatModel();
   List<String> subCategoriesListName = <String>[];
   List<int> subCategoriesListId = <int>[];
+
+  int page = 1;
   //
   int iBrand = 0;
   List<String> subCatListName = <String>[];
@@ -18,6 +20,7 @@ class ListAdsController extends GetxController {
   //
   int index = 0;
   bool isLoading = false;
+  bool isLoadingMore = false;
   String selectedBrand = 'Brand';
   String secondBrand = '';
   String? title;
@@ -29,6 +32,7 @@ class ListAdsController extends GetxController {
     id = Get.arguments['id'];
     index = Get.arguments['index'];
     getData();
+    loadingMore();
 
     super.onInit();
   }
@@ -87,5 +91,23 @@ class ListAdsController extends GetxController {
     listAds.addAll(ads);
     isLoading = false;
     update();
+  }
+
+  void loadingMore() {
+    controller.addListener(() async {
+      if (controller.position.maxScrollExtent == controller.position.pixels) {
+        isLoadingMore = true;
+        update();
+
+        await Future.delayed(const Duration(milliseconds: 500))
+            .then((value) async {
+          page = page + 1;
+
+          listAds = listAds + await getSubCatAds(id: id!, page: page);
+          isLoadingMore = false;
+          update();
+        });
+      }
+    });
   }
 }

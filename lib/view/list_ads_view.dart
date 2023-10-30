@@ -13,7 +13,6 @@ class ListAdsView extends StatelessWidget {
   });
 
   final ListAdsController controller = Get.find<ListAdsController>();
-  final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +138,7 @@ class ListAdsView extends StatelessWidget {
             );
           } else {
             return MasonryGridView.builder(
-              controller: scrollController,
+              controller: cntx.controller,
               physics: const BouncingScrollPhysics(),
               mainAxisSpacing: Get.width * 0.05,
               crossAxisSpacing: Get.width * 0.04,
@@ -149,23 +148,31 @@ class ListAdsView extends StatelessWidget {
                   const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: controller.listAds.length,
+              itemCount: cntx.isLoadingMore
+                  ? cntx.listAds.length + 1
+                  : cntx.listAds.length,
               itemBuilder: (context, index) {
-                if (index < controller.listAds.length) {
+                if (index < cntx.listAds.length) {
                   return productBox(
-                    id: controller.listAds[index].id!,
-                    image: controller.listAds[index].images!.first,
-                    title: controller.listAds[index].title!,
-                    desc: controller.listAds[index].desc!,
-                    price: controller.listAds[index].price!,
-                    created: controller.listAds[index].created!,
-                    userId: controller.listAds[index].userId!,
+                    id: cntx.listAds[index].id!,
+                    image: cntx.listAds[index].images!.first,
+                    title: cntx.listAds[index].title!,
+                    desc: cntx.listAds[index].desc!,
+                    price: cntx.listAds[index].price!,
+                    created: cntx.listAds[index].created!,
+                    userId: cntx.listAds[index].userId!,
                   );
                 } else {
-                  return const Row(
+                  return const Column(
                     children: [
-                      Spacer(),
-                      CircularProgressIndicator(),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Spacer(),
+                          CircularProgressIndicator(),
+                        ],
+                      ),
+                      SizedBox(height: 20),
                     ],
                   );
                 }

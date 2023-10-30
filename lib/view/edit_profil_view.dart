@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sooqin/core/utils/app_colors.dart';
-import 'package:sooqin/core/widgets/email_validator.dart';
 import 'package:sooqin/core/widgets/text_form.dart';
 import 'package:sooqin/logic/controller/my_account_controller.dart';
 import '../core/widgets/constum_button.dart';

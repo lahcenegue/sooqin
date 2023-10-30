@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:sooqin/core/utils/app_colors.dart';
 import 'package:sooqin/logic/controller/my_annonce_controller.dart';
 import '../core/widgets/product_box.dart';
 
@@ -26,40 +27,55 @@ class MyAnnoncesView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              return MasonryGridView.builder(
-                controller: controller,
-                physics: const BouncingScrollPhysics(),
-                mainAxisSpacing: 32,
-                crossAxisSpacing: 18,
-                shrinkWrap: true,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                gridDelegate:
-                    const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: myAnnonceController.myAds.length,
-                itemBuilder: (context, index) {
-                  if (index < myAnnonceController.myAds.length) {
-                    return productBox(
-                      id: myAnnonceController.myAds[index].id!,
-                      image: myAnnonceController.myAds[index].images![0],
-                      title: myAnnonceController.myAds[index].title!,
-                      desc: myAnnonceController.myAds[index].desc!,
-                      price: myAnnonceController.myAds[index].price!,
-                      created: myAnnonceController.myAds[index].created!,
-                      userId: myAnnonceController.myAds[index].userId!,
-                    );
-                  } else {
-                    return const Row(
-                      children: [
-                        Spacer(),
-                        CircularProgressIndicator(),
-                      ],
-                    );
-                  }
-                },
-              );
+              if (myAnnonceController.myAds.isEmpty) {
+                return Center(
+                  child: Text(
+                    'لم تقم بعد برفع اعلاناتك الخاصة',
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontSize: Get.width * 0.07,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                );
+              } else {
+                return MasonryGridView.builder(
+                  controller: controller,
+                  physics: const BouncingScrollPhysics(),
+                  mainAxisSpacing: 32,
+                  crossAxisSpacing: 18,
+                  shrinkWrap: true,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                  gridDelegate:
+                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: myAnnonceController.myAds.length,
+                  itemBuilder: (context, index) {
+                    if (index < myAnnonceController.myAds.length) {
+                      return productBox(
+                        id: myAnnonceController.myAds[index].id!,
+                        image: myAnnonceController.myAds[index].images![0],
+                        title: myAnnonceController.myAds[index].title!,
+                        desc: myAnnonceController.myAds[index].desc!,
+                        price: myAnnonceController.myAds[index].price!,
+                        created: myAnnonceController.myAds[index].created!,
+                        userId: myAnnonceController.myAds[index].userId!,
+                      );
+                    } else {
+                      return const Row(
+                        children: [
+                          Spacer(),
+                          CircularProgressIndicator(),
+                        ],
+                      );
+                    }
+                  },
+                );
+              }
             }
           })),
     );

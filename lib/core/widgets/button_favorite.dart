@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sooqin/Data/APIs/sqldb.dart';
-
-//TODO stateless
+import 'package:sooqin/core/utils/app_strings.dart';
 
 class ButtonFavorite extends StatefulWidget {
   final double? size;
@@ -52,10 +52,12 @@ class _ButtonFavoriteState extends State<ButtonFavorite> {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(isFavorite
+        Get.snackbar(
+            AppStrings.appName,
+            isFavorite
                 ? 'تم حذف المادة من المفضلة'
-                : 'تم إظافة المادة الى المفضلة')));
+                : 'تم إظافة المادة الى المفضلة');
+
         if (isFavorite == false) {
           addFavorite(
             id: widget.id.toString(),
