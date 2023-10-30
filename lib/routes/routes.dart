@@ -18,6 +18,7 @@ import 'package:sooqin/view/login_code_view.dart';
 import 'package:sooqin/view/login_mobile_view.dart';
 import 'package:sooqin/view/main_view.dart';
 import 'package:sooqin/view/notifications_view.dart';
+import 'package:sooqin/view/register_view.dart';
 
 class AppRoutes {
   //initailRoute
@@ -48,6 +49,10 @@ class AppRoutes {
     GetPage(
       name: Routes.loginCode,
       page: () => LoginCodeView(),
+    ),
+    GetPage(
+      name: Routes.register,
+      page: () => RegisterScreen(),
     ),
     GetPage(
       name: Routes.categoories,
@@ -95,6 +100,7 @@ class Routes {
   static const mainScreen = '/main';
   static const loginPhone = '/loginPhone';
   static const loginCode = '/loginCode';
+  static const register = '/register';
   static const categoories = '/categories';
   static const listAds = '/listAds';
   static const adsPage = '/ads';

@@ -19,6 +19,7 @@ class MyAccountController extends GetxController {
 
   @override
   void onInit() {
+    print('==================== My account Controller =======================');
     getData();
     checkPermission();
     super.onInit();

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 Widget customTextFormField({
   required String? hintText,
   Function(String)? onChanged,
-  String? Function(String?)? validator,
   TextInputType? keyboardType,
   IconData? prefixIcon,
   int? maxLine,
@@ -14,7 +13,6 @@ Widget customTextFormField({
     padding: const EdgeInsets.only(top: 20),
     child: TextFormField(
       onChanged: onChanged,
-      validator: validator,
       keyboardType: keyboardType ?? TextInputType.text,
       minLines: maxLine ?? 1,
       maxLines: maxLine ?? 1,

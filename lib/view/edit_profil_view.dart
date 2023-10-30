@@ -82,12 +82,6 @@ class EditProfilScreen extends StatelessWidget {
                       onChanged: (value) {
                         controller.writeInfo('info', value);
                       },
-                      validator: (value) {
-                        if (value.toString().isEmpty) {
-                          return 'أدخل المعلومات';
-                        }
-                        return null;
-                      },
                       keyboardType: TextInputType.text,
                       prefixIcon: Icons.info,
                       hintText: controller.profilData.info!.isEmpty
@@ -99,16 +93,6 @@ class EditProfilScreen extends StatelessWidget {
                     customTextFormField(
                       onChanged: (value) {
                         controller.writeInfo('email', value);
-                      },
-                      validator: (value) {
-                        if (value.toString().isEmpty) {
-                          return 'أرجو التحقق من عنوان البريد الالكتروني';
-                        }
-                        if (value!.isNotEmpty &&
-                            !value.toString().isValidEmail()) {
-                          return 'أرجو التحقق من عنوان البريد الالكتروني';
-                        }
-                        return null;
                       },
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icons.mail,

@@ -54,7 +54,7 @@ class LoginController extends GetxController {
           isApiCallProcess = false;
           if (value.code == null) {
             if (value.user == "new") {
-              //Get.off(RegisterScreen);
+              Get.offAllNamed(Routes.register);
             } else if (value.user == "old") {
               box.write('phone', phoneNumber);
               box.write('token', value.token);
